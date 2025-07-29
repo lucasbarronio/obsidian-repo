@@ -1,0 +1,42 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.128.0'
+          extended: true
+
+      - name: Update Theme
+        run: |
+          cd themes/ananke
+          git checkout main
+          git pull origin main
+
+      - name: Convert Obsidian Wikilinks
+        run: bash scripts/convert-links.sh
+        
+      - name: Build
+        run: hugo --minify --gc --baseURL "https://lucasbarronio.github.io/obsidian-repo/"
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

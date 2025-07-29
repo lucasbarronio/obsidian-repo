@@ -1,0 +1,22 @@
+# Hugo
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+.hugo_build.lock
+
+# Obsidian
+.obsidian/
+*.swp
+
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
+
+# Backups e arquivos temporários
+*.bak
+backup_*/
+*.tmp
+
+# Ambiente
+.env
+*.local

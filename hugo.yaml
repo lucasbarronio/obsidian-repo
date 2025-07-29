@@ -1,0 +1,17 @@
+baseURL: "https://lucasbarronio.github.io/obsidian-repo/"
+languageCode: "pt-br"
+title: "Vault"
+theme: "ananke"
+
+permalinks:
+  programming: '/:sections[1:]/:slug/'
+
+disablePathToLower: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  editURL: "https://github.com/lucasbarronio/obsidian-repo/edit/main/content/"

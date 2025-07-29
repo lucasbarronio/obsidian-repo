@@ -1,0 +1,10 @@
+.obsidian-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  .obsidian-content a[href$=".md"] {
+    color: #8ab4f8;
+    text-decoration: underline;
+  }

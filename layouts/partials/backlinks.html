@@ -1,0 +1,18 @@
+<!-- layouts/partials/backlinks.html -->
+{{ $backlinks := slice }}
+{{ range .Site.Pages }}
+  {{ if in .Content $.Page.RelPermalink }}
+    {{ $backlinks = $backlinks | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $backlinks) 0 }}
+<div class="backlinks">
+  <h3>Notas que linkam para esta</h3>
+  <ul>
+    {{ range $backlinks }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

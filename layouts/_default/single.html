@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ .Title }} | Meu Vault</title>
+  <link rel="stylesheet" href="/css/obsidian.css">
+</head>
+<body>
+  <article class="obsidian-note">
+    {{ .Content }}
+    
+    {{/* Backlinks */}}
+    {{ $backlinks := partial "backlinks.html" . }}
+    {{ if $backlinks }}
+    <section class="backlinks">
+      <h3>Links para esta nota</h3>
+      {{ $backlinks }}
+    </section>
+    {{ end }}
+  </article>
+</body>
+</html>
